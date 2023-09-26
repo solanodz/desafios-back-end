@@ -1,0 +1,11 @@
+[
+	{
+		"id": 1695684960232,
+		"title": "producto 12",
+		"description": "descripcion 12",
+		"thumbnail": "imagen.jpg",
+		"code": 100,
+		"price": 40,
+		"stock": 500
+	}
+]
