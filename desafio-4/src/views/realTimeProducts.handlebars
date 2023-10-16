@@ -1,0 +1,28 @@
+<h1>Lista de productos en tiempo real</h1>
+<ul id="product-list"></ul>
+
+<script src="/socket.io/socket.io.js"></script>
+<script>
+    const socket = io();
+
+    socket.on('connect', () => {
+        console.log('🔌 Cliente conectado');
+    });
+
+    socket.on('disconnect', () => {
+        console.log('🔌 Cliente desconectado.');
+    });
+
+    socket.on('productAdded', (product) => {
+        const productListItem = document.createElement('li');
+        productListItem.textContent = `${product.id} - ${product.name} - ${product.price}`;
+        document.getElementById('product-list').appendChild(productListItem);
+    });
+
+    socket.on('productDeleted', (productId) => {
+        const productListItem = document.querySelector(`li[data-id="${productId}"]`);
+        if (productListItem) {
+            productListItem.remove();
+        }
+    });
+</script>
